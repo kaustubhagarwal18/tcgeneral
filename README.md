@@ -1,5 +1,11 @@
 # tcgeneral
 
+ebtables -I FORWARD -d D0:CF:5E:00:BF:83 -j CONTINUE --log-prefix "LOGWATCHERZIGBEE"
+
+service firewall restart
+
+
+
 General commands of tc to understand traffic flow in Linux
 Commands
 
