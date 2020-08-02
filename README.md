@@ -2,8 +2,19 @@
 
 ebtables -I FORWARD -d D0:CF:5E:00:BF:83 -j CONTINUE --log-prefix "LOGWATCHERZIGBEE"
 
-service firewall restart
+Firewall Location - /etc/config/firewall    ----- added lan to lan forwarding 
 
+Rule for logging --- iptables -t raw -A PREROUTING --destination 192.168.1.194 -j LOG --log-prefix "LOGWATCHERZIGBEE"  either in LUCI or in file /etc/firewall.user
+
+Enable counters in file - /etc/sysctl.conf
+
+net.bridge.bridge-nf-call-iptables=1
+net.bridge.bridge-nf-call-arptables=1
+net.bridge.bridge-nf-call-iptables=1
+net.bridge.bridge-nf-call-ip6tables=1
+
+
+service firewall restart   -- restart firewall to activate rules
 
 
 General commands of tc to understand traffic flow in Linux
